@@ -1,0 +1,232 @@
+/* ==========================================================================
+   DESIGN SYSTEM MICHOU — STUDIO DE BEAUTÉ
+   Palette Luxe Silencieux :
+   - Noir principal : #050505
+   - Noir secondaire : #0D0D0D
+   - Gold de marque : #D4A72C
+   - Gold clair : #F2C75C
+   - Blanc cassé : #F8F6F0
+   - Gris secondaire : #A6A6A6
+   - Gris foncé : #2A2A2A
+   ========================================================================== */
+
+:root {
+  --color-black: #050505;
+  --color-dark: #0D0D0D;
+  --color-card: #121212;
+  --color-gold: #D4A72C;
+  --color-gold-light: #F2C75C;
+  --color-white: #F8F6F0;
+  --color-gray: #A6A6A6;
+  --color-gray-dark: #2A2A2A;
+  --color-border: rgba(212, 167, 44, 0.15);
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --transition-fast: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+  --max-width: 1440px;
+}
+
+/* Reset Global */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  overflow-x: hidden;
+}
+
+/* Sélection & Custom Scrollbar */
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-black);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-dark);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* Typography Scale */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--color-white);
+  letter-spacing: -0.01em;
+}
+
+.hero-title {
+  font-size: clamp(3.2rem, 7.5vw, 6.8rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.section-title-large {
+  font-size: clamp(2.2rem, 4.5vw, 4.2rem);
+  line-height: 1.08;
+}
+
+.section-subtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-gold);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+p {
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  color: var(--color-white);
+  opacity: 0.88;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+p.lead {
+  font-size: clamp(1.1rem, 1.4vw, 1.35rem);
+  font-weight: 300;
+  opacity: 0.95;
+}
+
+.text-gold {
+  color: var(--color-gold);
+}
+
+.text-muted {
+  color: var(--color-gray);
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 5vw, 4.5rem);
+  padding-right: clamp(1.25rem, 5vw, 4.5rem);
+}
+
+.section-padding {
+  padding-top: clamp(4.5rem, 10vw, 9.5rem);
+  padding-bottom: clamp(4.5rem, 10vw, 9.5rem);
+}
+
+/* Subtle Divider Line */
+.gold-divider {
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-gold);
+  margin: 1.5rem 0;
+  opacity: 0.7;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollIndicator {
+  0% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(10px); opacity: 0.3; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.9s var(--transition-smooth) forwards;
+}
+
+.animate-fade-up {
+  animation: fadeUp 1s var(--transition-smooth) forwards;
+}
+
+/* Responsive Grid Helpers */
+.grid-editorial {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .grid-editorial {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+}
+
+/* ==========================================================================
+   HEADER RESPONSIVE RULES
+   ========================================================================== */
+@media (min-width: 992px) {
+  .desktop-nav {
+    display: flex !important;
+  }
+  .desktop-action {
+    display: block !important;
+  }
+  .mobile-menu-btn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .desktop-action {
+    display: none !important;
+  }
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+}
